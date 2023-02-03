@@ -16,6 +16,7 @@ struct APIService {
             return
         }
         let session = URLSession(configuration: .default)
+        session.configuration.timeoutIntervalForRequest = 30.0
         let task = session.dataTask(with: url) { data, response, error in
             if let safeError = error {
                 print("[API Service] URL failure \(safeError)")

@@ -8,12 +8,14 @@
 import UIKit
 
 class CarDetailsTableViewCell: UITableViewCell {
-    var carCellVM = CarCellViewModel()
-    var vechicleData : VechicleData? {
+    var carVM : CarDataViewModel?
+    var vechicleData : CarDataViewModel? {
         didSet {
-            carCellVM.vechicleData = vechicleData
-            textLabel?.text = carCellVM.GetMakeAndModel()
-            detailTextLabel?.text = carCellVM.GetVinNumber()
+            guard let carDataVM = vechicleData else{
+                return
+            }
+            textLabel?.text = carDataVM.GetMakeAndModel(metaInfo: false)
+            detailTextLabel?.text = carDataVM.GetVinNumber()
         }
     }
     

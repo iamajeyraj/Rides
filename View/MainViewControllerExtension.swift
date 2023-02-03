@@ -37,10 +37,11 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-//extension to void cluttering of MainViewController
 //TextField extension
 extension MainViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        StartSpinnerAnimation()
+        helperText.isHidden = true
         carVM.FetchData(sizeText: sizeField.text)
         sizeField.endEditing(true)
         return true

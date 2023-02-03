@@ -14,18 +14,17 @@ class CarDetailsViewController: UIViewController {
     @IBOutlet weak var colorLabel: UILabel!
     @IBOutlet weak var carType: UILabel!
     
-    var carDetails : VechicleData? {
-        didSet { }
-    }
+    var carDetails : CarDataViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-            guard let vechicleInfo = carDetails else {
-                return
-            }
-            vinLabel.text = vechicleInfo.vin
-            modelValue.text = vechicleInfo.make_and_model
-            colorLabel.text = vechicleInfo.color
-            carType.text = vechicleInfo.car_type
+        guard let carDataVM = carDetails else{
+            return
+        }
+        
+        vinLabel.text = carDataVM.GetVinNumber()
+        modelValue.text = carDataVM.GetMakeAndModel(metaInfo: true)
+        colorLabel.text = carDataVM.GetColor()
+        carType.text = carDataVM.GetCarType()
     }
 }

@@ -16,10 +16,10 @@ class MainViewModel  {
     var vechicleTypeSections : [String] = []
     var delegate: APIDataSource?
     var currSort : SortType = .VIN
-    var selectedCar : VechicleData?
+    var selectedCar : CarDataViewModel?
     
     func GetPlaceholderText(value: String?) -> String {
-        var placeHolder = "Number of cars?"
+        var placeHolder = "Enter number of cars. Eg.9"
         guard let safeValue = value else {
             return ""
         }
@@ -33,32 +33,53 @@ class MainViewModel  {
     }
     
     func FetchData(sizeText : String?) {
-        if let size = sizeText {
-            if let sizeInt = Int(size) {
-                if (1...100).contains(sizeInt) {
-                    ResetValues()
-                    service.GetVechileListWithSize(size: sizeInt) { carData in
-                        guard var vechicleData = carData else{
-                            return
-                        }
-                        
-                        DispatchQueue.main.async {
-                            vechicleData.sort { x1, x2 in
-                                x1.vin < x2.vin
-                            }
-                            self.vechicleByVin = vechicleData
-                            vechicleData.sort { x1, x2 in
-                                x1.car_type < x2.car_type
-                            }
-                            self.LoadVechicleBySection(vechileInfo: vechicleData)
-                            self.delegate?.SetVechicleData(dataFetched: true, error: "")
-                        }
+        if CheckGivenValueValid(sizeText: sizeText)  {
+            ResetValues()
+            guard let size = sizeText else { return }
+            guard let sizeInt = Int(size) else { return }
+            service.GetVechileListWithSize(size: sizeInt) { carData in
+                guard var vechicleData = carData else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    vechicleData.sort { x1, x2 in
+                        x1.vin < x2.vin
                     }
-                } else {
-                    self.delegate?.SetVechicleData(dataFetched: false, error: "value not in range")
+                    self.vechicleByVin = vechicleData
+                    vechicleData.sort { x1, x2 in
+                        x1.car_type < x2.car_type
+                    }
+                    self.LoadVechicleBySection(vechileInfo: vechicleData)
+                    self.delegate?.SetVechicleData(dataFetched: true, error: "")
                 }
             }
+        } else {
+            
         }
+    }
+    
+    func CheckGivenValueValid(sizeText: String?)-> Bool {
+        if let safeSizeText = sizeText {
+            if let safeSizeIntText = safeSizeText.rangeOfCharacter(from: NSCharacterSet.decimalDigits)
+            {
+                if let sizeInt = Int(safeSizeText) {
+                    if (1...100).contains(sizeInt) {
+                        return true
+                    }else{
+                        self.delegate?.SetVechicleData(dataFetched: false,
+                                                       error: "Enter value between 1 and 100")
+                    }
+                }
+            } else {
+                self.delegate?.SetVechicleData(dataFetched: false,
+                                               error: "Please give a numberic value")
+            }
+        }else{
+            self.delegate?.SetVechicleData(dataFetched: false, error: "Please enter a value")
+        }
+        
+        return false
     }
     
     func ResetValues() {
@@ -100,14 +121,14 @@ class MainViewModel  {
         return nil
     }
     
-    func GetCarDetailForRow(section: Int, row:Int) -> VechicleData?{
+    func GetCarDetailForRow(section: Int, row:Int) -> CarDataViewModel?{
         if currSort == .CAR_TYPE {
-            if let safeDetail = GetVechileDetailBySection(sectionIndex: section){
-                return safeDetail[row]
+            if let safeDetail = GetVechileDetailBySection(sectionIndex: section) {
+                return CarDataViewModel(vechicleInfo: safeDetail[row])
             }
         }
         
-        return vechicleByVin[row]
+        return CarDataViewModel(vechicleInfo: vechicleByVin[row])
     }
     
     func GetNumberOfRowsInSection(section:Int) -> Int {
@@ -132,7 +153,7 @@ class MainViewModel  {
         }
     }
     
-    func GetSelectedCar() -> VechicleData?{
+    func GetSelectedCar() -> CarDataViewModel?{
         return selectedCar
     }
 }

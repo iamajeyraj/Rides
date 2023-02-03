@@ -12,5 +12,6 @@ struct VechicleData : Codable {
     let make_and_model : String
     let car_type:String
     let color:String
+    let kilometrage : Double
 }
 typealias VechicleInfos = [VechicleData]

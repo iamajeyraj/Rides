@@ -13,8 +13,12 @@ class MainViewController: UIViewController, APIDataSource {
     @IBOutlet weak var carListTableViewController: UITableView!
     @IBOutlet weak var vinButton: UIButton!
     @IBOutlet weak var carTypeButton: UIButton!
+    @IBOutlet weak var activityControl: UIActivityIndicatorView!
+    
+    @IBOutlet weak var helperText: UILabel!
+    
     var carVM = MainViewModel()
-    let segueIdentifier = "details"
+    let segueIdentifier = "page"
     
     override func viewDidLoad() {
         Init()
@@ -25,9 +29,12 @@ class MainViewController: UIViewController, APIDataSource {
         carVM.delegate = self
         carListTableViewController.delegate = self
         carListTableViewController.dataSource = self
+        StopSpinnerAnimation()
     }
     
     @IBAction func OnSearchDone(_ sender: UIButton) {
+        StartSpinnerAnimation()
+        helperText.isHidden = true
         carVM.FetchData(sizeText: sizeField.text)
         sizeField.endEditing(true)
     }
@@ -58,19 +65,37 @@ class MainViewController: UIViewController, APIDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueIdentifier {
             if let safevechicleData = carVM.GetSelectedCar() {
-                let detailVC = segue.destination as! CarDetailsViewController
-                detailVC.carDetails = safevechicleData
+                let detailVC = segue.destination as! CollectionViewController
+                detailVC.vechicleData = safevechicleData
             }
         }
     }
     
     func SetVechicleData(dataFetched: Bool,error: String) {
+        StopSpinnerAnimation()
         if dataFetched {
             self.HighLightButton()
             self.carListTableViewController.reloadData()
-        }else{
+        } else {
+            CreateAlert(title: "Validation Failed", message: error)
             print("[Main View Controller] Error : \(error)")
         }
+    }
+    
+    func StartSpinnerAnimation(){
+        activityControl.startAnimating()
+        activityControl.isHidden = false
+    }
+    
+    func StopSpinnerAnimation(){
+        activityControl.stopAnimating()
+        activityControl.isHidden = true
+    }
+    
+    func CreateAlert(title:String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
