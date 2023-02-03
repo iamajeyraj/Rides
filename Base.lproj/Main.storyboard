@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="lAQ-5c-bPZ">
+            <objects>
+                <navigationController id="Mc5-Et-kqO" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5lS-Vd-04o">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JDy-e9-2tG">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Xva-t6-Joc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lJ8-st-gA5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1342" y="98"/>
+        </scene>
+        <!--Vehicle List-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController title="Vehicle List" id="BYZ-38-t0r" customClass="MainViewController" customModule="Rides" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of car?" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="vqP-ep-vHx">
+                                <rect key="frame" x="20" y="99" width="326" height="40"/>
+                                <color key="backgroundColor" systemColor="systemFillColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="NFA-Kn-jZR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6eQ-Ch-xZ4">
+                                <rect key="frame" x="354" y="99.5" width="40" height="38.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Hlh-RH-DJE"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" backgroundImage="magnifyingglass" catalog="system"/>
+                                <connections>
+                                    <action selector="OnSearchDone:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eFA-OJ-ODr"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WD3-pU-EKb">
+                                <rect key="frame" x="0.0" y="186.5" width="414" height="675.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="Qxt-Rw-zjO"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Rko-di-Ng2" detailTextLabel="p5e-B8-YMn" rowHeight="89" style="IBUITableViewCellStyleSubtitle" id="jE7-Ul-Xni" customClass="CarDetailsTableViewCell" customModule="Rides" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="89"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jE7-Ul-Xni" id="rtV-Qy-L1B">
+                                            <rect key="frame" x="0.0" y="0.0" width="385.5" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rko-di-Ng2">
+                                                    <rect key="frame" x="20" y="20.5" width="41.5" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p5e-B8-YMn">
+                                                    <rect key="frame" x="20" y="48" width="51.5" height="17.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort By" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLh-wt-Mud">
+                                <rect key="frame" x="133" y="147" width="60" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="Apr-6b-lDP"/>
+                                    <constraint firstAttribute="width" constant="60" id="N7n-ti-coe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0w-8K-rIP">
+                                <rect key="frame" x="266" y="147" width="128" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="6ec-5s-5j4"/>
+                                    <constraint firstAttribute="height" constant="29" id="Sbc-lR-rCK"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Car Type">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="OnCarTypeClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kbh-Jl-Baj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ck5-bN-MvP">
+                                <rect key="frame" x="201" y="147" width="57" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="Oxj-x4-vHG"/>
+                                    <constraint firstAttribute="width" constant="57" id="ktZ-1c-rYf"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="VIN">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="OnVinSortClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qvs-Xj-T81"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vqP-ep-vHx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="11" id="1IP-4K-M7S"/>
+                            <constraint firstItem="WD3-pU-EKb" firstAttribute="top" secondItem="ck5-bN-MvP" secondAttribute="bottom" constant="10.5" id="2Au-cA-00X"/>
+                            <constraint firstItem="WD3-pU-EKb" firstAttribute="top" secondItem="D0w-8K-rIP" secondAttribute="bottom" constant="10.5" id="4oR-bg-8kp"/>
+                            <constraint firstItem="WD3-pU-EKb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4px-na-CYG"/>
+                            <constraint firstItem="ck5-bN-MvP" firstAttribute="leading" secondItem="xLh-wt-Mud" secondAttribute="trailing" constant="8" id="8sH-at-oQ7"/>
+                            <constraint firstItem="ck5-bN-MvP" firstAttribute="top" secondItem="vqP-ep-vHx" secondAttribute="bottom" constant="8" id="9fh-Qi-Xfz"/>
+                            <constraint firstItem="D0w-8K-rIP" firstAttribute="leading" secondItem="ck5-bN-MvP" secondAttribute="trailing" constant="8" id="EmT-Xp-ujA"/>
+                            <constraint firstItem="vqP-ep-vHx" firstAttribute="top" secondItem="6eQ-Ch-xZ4" secondAttribute="top" id="FYl-DM-O5U"/>
+                            <constraint firstItem="D0w-8K-rIP" firstAttribute="top" secondItem="vqP-ep-vHx" secondAttribute="bottom" constant="8" id="HNO-O8-aF8"/>
+                            <constraint firstItem="vqP-ep-vHx" firstAttribute="bottom" secondItem="6eQ-Ch-xZ4" secondAttribute="bottom" id="JFa-vA-JYf"/>
+                            <constraint firstItem="WD3-pU-EKb" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="JOs-9U-c4r"/>
+                            <constraint firstItem="xLh-wt-Mud" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="133" id="JxW-be-W87"/>
+                            <constraint firstAttribute="trailing" secondItem="WD3-pU-EKb" secondAttribute="trailing" id="XW1-il-gk4"/>
+                            <constraint firstItem="xLh-wt-Mud" firstAttribute="top" secondItem="vqP-ep-vHx" secondAttribute="bottom" constant="8" id="dRc-ah-2dd"/>
+                            <constraint firstItem="6eQ-Ch-xZ4" firstAttribute="leading" secondItem="vqP-ep-vHx" secondAttribute="trailing" constant="8" symbolic="YES" id="fgH-AU-vmR"/>
+                            <constraint firstItem="WD3-pU-EKb" firstAttribute="top" secondItem="xLh-wt-Mud" secondAttribute="bottom" constant="10.5" id="gWg-62-18q"/>
+                            <constraint firstItem="vqP-ep-vHx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hQB-2n-0WX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="D0w-8K-rIP" secondAttribute="trailing" constant="20" id="jgf-Bz-RZp"/>
+                            <constraint firstItem="6eQ-Ch-xZ4" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="nWZ-2m-Bkd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mPg-OL-91N"/>
+                    <connections>
+                        <outlet property="carListTableViewController" destination="WD3-pU-EKb" id="UIJ-lX-KqR"/>
+                        <outlet property="carTypeButton" destination="D0w-8K-rIP" id="eam-nf-9C2"/>
+                        <outlet property="sizeField" destination="vqP-ep-vHx" id="mbr-qr-QjE"/>
+                        <outlet property="vinButton" destination="ck5-bN-MvP" id="XVP-kr-ZX0"/>
+                        <segue destination="GR0-ih-klV" kind="presentation" identifier="details" id="WAx-o4-wRI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-571" y="98"/>
+        </scene>
+        <!--Car Details View Controller-->
+        <scene sceneID="xbi-6D-1YY">
+            <objects>
+                <viewController id="GR0-ih-klV" customClass="CarDetailsViewController" customModule="Rides" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G1B-HA-KnJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="BnE-mD-Yvb" customClass="CarDetailsView" customModule="Rides" customModuleProvider="target">
+                                <rect key="frame" x="20" y="44" width="374" height="764"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6C-2d-Lz3">
+                                        <rect key="frame" x="8" y="8" width="358" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="358" id="V1Q-hF-4UB"/>
+                                            <constraint firstAttribute="height" constant="39" id="c0L-yx-XMN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Kd9-cd-Wyd">
+                                        <rect key="frame" x="8" y="55" width="148.5" height="123"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kDf-Wn-Eoh">
+                                                <rect key="frame" x="0.0" y="0.0" width="148.5" height="19.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vin" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdf-nf-asj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="261" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtC-PE-82w" userLabel="Value">
+                                                        <rect key="frame" x="112" y="0.0" width="36.5" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rnb-0x-8xc">
+                                                <rect key="frame" x="0.0" y="34.5" width="148.5" height="19.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Model" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tey-pM-Jfh" userLabel="Model">
+                                                        <rect key="frame" x="0.0" y="0.0" width="44.5" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvt-2p-Vr0" userLabel="Value">
+                                                        <rect key="frame" x="94.5" y="0.0" width="54" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jiJ-wq-d2j">
+                                                <rect key="frame" x="0.0" y="69" width="148.5" height="19.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Color" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpp-Bs-6Ox" userLabel="Color">
+                                                        <rect key="frame" x="0.0" y="0.0" width="38" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Akc-Zc-GnM" userLabel="Value">
+                                                        <rect key="frame" x="88" y="0.0" width="60.5" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="50" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66E-Fj-f0R">
+                                                <rect key="frame" x="0.0" y="103.5" width="148.5" height="19.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMb-Qz-7bL" userLabel="Car Type">
+                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceH-Zq-miX" userLabel="Value">
+                                                        <rect key="frame" x="112" y="0.0" width="36.5" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <viewLayoutGuide key="safeArea" id="JrW-L2-EZh"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Kd9-cd-Wyd" firstAttribute="leading" secondItem="JrW-L2-EZh" secondAttribute="leading" constant="8" id="Cf7-mR-7T7"/>
+                                    <constraint firstItem="JrW-L2-EZh" firstAttribute="bottom" secondItem="Kd9-cd-Wyd" secondAttribute="bottom" constant="586" id="GmN-yh-3de"/>
+                                    <constraint firstItem="i6C-2d-Lz3" firstAttribute="top" secondItem="JrW-L2-EZh" secondAttribute="top" constant="8" id="VSh-yy-U6e"/>
+                                    <constraint firstItem="JrW-L2-EZh" firstAttribute="trailing" secondItem="i6C-2d-Lz3" secondAttribute="trailing" constant="8" id="W2G-rz-ODm"/>
+                                    <constraint firstItem="Kd9-cd-Wyd" firstAttribute="top" secondItem="i6C-2d-Lz3" secondAttribute="bottom" constant="8" id="fXG-C8-9QE"/>
+                                    <constraint firstItem="i6C-2d-Lz3" firstAttribute="leading" secondItem="JrW-L2-EZh" secondAttribute="leading" constant="8" id="x2L-Uf-mXc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VmX-rR-AIi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="carType" destination="ceH-Zq-miX" id="yU0-1t-CJt"/>
+                        <outlet property="colorLabel" destination="Akc-Zc-GnM" id="Lv2-ma-xWI"/>
+                        <outlet property="modelValue" destination="Uvt-2p-Vr0" id="89e-ry-Rjt"/>
+                        <outlet property="vinLabel" destination="xtC-PE-82w" id="HPc-JY-WKg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vVT-Kl-Kkj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="100" id="qm1-hT-0IH">
+                    <rect key="frame" x="0.0" y="0.0" width="159" height="19.5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vin" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8J-zs-JqO">
+                            <rect key="frame" x="0.0" y="0.0" width="22.5" height="19.5"/>
+                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Az-hP-hsJ" userLabel="Value">
+                            <rect key="frame" x="122.5" y="0.0" width="36.5" height="19.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="N53-rJ-qtk"/>
+                </stackView>
+            </objects>
+            <point key="canvasLocation" x="228.98550724637684" y="97.767857142857139"/>
+        </scene>
+        <!--Car Details Page View Controller-->
+        <scene sceneID="UxS-ph-ykk">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="qf1-zM-RCl" customClass="CarDetailsPageViewController" customModule="Rides" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fsc-zI-02R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="229" y="-555"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aRw-uO-5ZP">
+            <objects>
+                <viewController id="Fzd-tu-qc2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C6N-Pb-xuh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="uTf-l3-S9m" customClass="ExtendedDetailsView" customModule="Rides" customModuleProvider="target">
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heV-uw-2PO">
+                                        <rect key="frame" x="8" y="9" width="358" height="20"/>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kilometerage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RS2-Vt-nNn">
+                                        <rect key="frame" x="16" y="81" width="208" height="20"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carbon Emission" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOf-Mr-8Ib">
+                                        <rect key="frame" x="16" y="109" width="208" height="20"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <viewLayoutGuide key="safeArea" id="lSt-Cb-2eE"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="heV-uw-2PO" firstAttribute="trailing" secondItem="uTf-l3-S9m" secondAttribute="trailingMargin" id="EPQ-7x-NRq"/>
+                                    <constraint firstItem="heV-uw-2PO" firstAttribute="top" secondItem="lSt-Cb-2eE" secondAttribute="top" constant="9" id="LL2-qI-DEm"/>
+                                    <constraint firstItem="RS2-Vt-nNn" firstAttribute="leading" secondItem="lSt-Cb-2eE" secondAttribute="leading" constant="16" id="LSG-dQ-TGh"/>
+                                    <constraint firstItem="JOf-Mr-8Ib" firstAttribute="top" secondItem="RS2-Vt-nNn" secondAttribute="bottom" constant="8" symbolic="YES" id="Si0-zk-EAU"/>
+                                    <constraint firstItem="RS2-Vt-nNn" firstAttribute="top" secondItem="heV-uw-2PO" secondAttribute="bottom" constant="52" id="WHX-um-1dR"/>
+                                    <constraint firstItem="RS2-Vt-nNn" firstAttribute="trailing" secondItem="JOf-Mr-8Ib" secondAttribute="trailing" id="X7p-42-K5I"/>
+                                    <constraint firstItem="RS2-Vt-nNn" firstAttribute="leading" secondItem="JOf-Mr-8Ib" secondAttribute="leading" id="X9N-tj-P8k"/>
+                                    <constraint firstItem="lSt-Cb-2eE" firstAttribute="trailing" secondItem="RS2-Vt-nNn" secondAttribute="trailing" constant="150" id="guG-ff-W0G"/>
+                                    <constraint firstItem="heV-uw-2PO" firstAttribute="leading" secondItem="uTf-l3-S9m" secondAttribute="leadingMargin" id="wig-iX-CA3"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="carbonEmissionLabel" destination="JOf-Mr-8Ib" id="yKw-xI-br8"/>
+                                    <outlet property="kilometerageLabel" destination="RS2-Vt-nNn" id="hyd-KY-S0y"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KL2-Wj-9WR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vl1-CX-3PC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1022" y="98"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
